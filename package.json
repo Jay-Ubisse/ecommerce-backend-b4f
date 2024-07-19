@@ -4,12 +4,16 @@
   "description": "Backend do projecto eCommerce do Bootcamp MOZ 2024",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Turma B4F 2024",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongoose": "^8.5.1",
     "nodemon": "^3.1.4"
   }
 }
