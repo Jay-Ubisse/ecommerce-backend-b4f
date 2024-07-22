@@ -6,6 +6,10 @@ const readProduct = (req, res) => {
   res.status(200).json({ message: `Produto ${req.params.id}  encontrado` })
 };
 
+const readAllProducts = (req, resp) => {
+  res.status(200).json({ message: `Todos os productos`})
+};
+
 
 const createProduct = (req, res) => {
   const { name, category, price, description } = req.body
@@ -30,4 +34,4 @@ const deleteProduct = (req, res) => {
 
 
 
-module.exports = { createProduct, updateProduct, deleteProduct, readProduct }
+module.exports = { createProduct, updateProduct, deleteProduct, readProduct, readAllProducts }
