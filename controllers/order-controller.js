@@ -6,3 +6,7 @@ export const getOrders = (req, res) => {
   });
 };
 
+export const getOrderById = (req, res) => {
+  const { id } = req.params.id;
+  res.json({ msg: `Pedido com ID ${req.params.id} foi retornado` });
+};
