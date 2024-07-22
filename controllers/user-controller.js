@@ -7,3 +7,9 @@ const getUser = (req, res) => {
     message: `Obter Usuario ${req.params.id}`,
   });
 };
+
+const createUser = (req, res) => {
+  res
+    .status(200)
+    .json({ message: "Usuario criado com sucesso!", data: req.body });
+};

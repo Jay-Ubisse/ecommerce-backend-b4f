@@ -4,3 +4,5 @@ const router = express.Router();
 router.get("/", GetAllUser);
 
 router.get("/:id", getUser);
+
+router.post("/", createUser);
