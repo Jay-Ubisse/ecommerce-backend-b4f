@@ -28,3 +28,8 @@ export const updateOrderName = (req, res) => {
   const { id } = req.params.id;
   res.json({ msg: `Nome do pedido com ID ${req.params.id} foi alterado` });
 };
+
+export const deleteOrder = (req, res) => {
+  const { id } = req.params.id;
+  res.json({ msg: `Pedido com ID ${req.params.id} foi excluído com sucesso` });
+};
