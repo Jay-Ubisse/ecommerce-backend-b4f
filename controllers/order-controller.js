@@ -17,7 +17,14 @@ export const createOrder = (req, res) => {
 };
 
 export const updateOrder = (req, res) => {
-    const { id } = req.params.id;
-    const { name, price, qty, brand } = req.body;
-    res.json({msg:`Pedido com ID ${req.params.id} foi atualizado com sucesso`});
-  };
+  const { id } = req.params.id;
+  const { name, price, qty, brand } = req.body;
+  res.json({
+    msg: `Pedido com ID ${req.params.id} foi atualizado com sucesso`,
+  });
+};
+
+export const updateOrderName = (req, res) => {
+  const { id } = req.params.id;
+  res.json({ msg: `Nome do pedido com ID ${req.params.id} foi alterado` });
+};
