@@ -2,11 +2,11 @@
 const readProduct = (req, res) => {
 
 
-  const { name, category, price, description } = req.body
+ 
   res.status(200).json({ message: `Produto ${req.params.id}  encontrado` })
 };
 
-const readAllProducts = (req, resp) => {
+const readAllProducts = (req, res) => {
   res.status(200).json({ message: `Todos os productos`})
 };
 
