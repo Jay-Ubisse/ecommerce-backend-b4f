@@ -1,12 +1,12 @@
 
-const readProduct = (req, res) => {
+const getProduct = (req, res) => {
 
 
  
   res.status(200).json({ message: `Produto ${req.params.id}  encontrado` })
 };
 
-const readAllProducts = (req, res) => {
+const getAllProducts = (req, res) => {
   res.status(200).json({ message: `Todos os productos`})
 };
 
@@ -34,4 +34,4 @@ const deleteProduct = (req, res) => {
 
 
 
-module.exports = { createProduct, updateProduct, deleteProduct, readProduct, readAllProducts }
+module.exports = { createProduct, updateProduct, deleteProduct, getProduct, getAllProducts }
