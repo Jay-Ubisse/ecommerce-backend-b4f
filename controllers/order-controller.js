@@ -10,3 +10,9 @@ export const getOrderById = (req, res) => {
   const { id } = req.params.id;
   res.json({ msg: `Pedido com ID ${req.params.id} foi retornado` });
 };
+
+export const createOrder = (req, res) => {
+    const { name, price, qty, brand } = req.body;
+    res.json({ msg: "Novo pedido foi criado com sucesso" });
+  };
+  
