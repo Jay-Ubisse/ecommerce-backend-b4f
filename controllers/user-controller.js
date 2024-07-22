@@ -10,6 +10,6 @@ const getUser = (req, res) => {
 
 const createUser = (req, res) => {
   res
-    .status(200)
+    .status(201)
     .json({ message: "Usuario criado com sucesso!", data: req.body });
 };
