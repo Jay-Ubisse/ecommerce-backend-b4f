@@ -13,3 +13,4 @@ const createUser = (req, res) => {
     .status(201)
     .json({ message: "Usuario criado com sucesso!", data: req.body });
 };
+module.exports = { GetAllUser, getUser,  createUser};
