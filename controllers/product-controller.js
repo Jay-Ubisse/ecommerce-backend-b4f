@@ -6,15 +6,15 @@ const Product = require("../models/produts-model");
 const getAllProduct = asyncHandler(async (req, res) => {
   const products = await Product.find();
 
-  res.status(200).json({ message: "Todos Produtos", data: products });
+  res.status(200).json(products );
 });
 
 const getProduct = asyncHandler(async (req, res) => {
-  res.status(200).json({
-    message: `Obter produto ${req.params.id}`,
-  });
-});
+  const {id} = req.params
+  const product = await Product.findById(id);
 
+  res.status(200).json( product );
+});
 
 
 const createProduct = asyncHandler(async(req, res) => {
