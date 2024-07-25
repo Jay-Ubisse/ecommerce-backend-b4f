@@ -9,10 +9,12 @@ const getAllProduct = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Todos Produtos", data: products });
 });
 
-const getProduct = (req, res) => {
+const getProduct = asyncHandler(async (req, res) => {
+  res.status(200).json({
+    message: `Obter produto ${req.params.id}`,
+  });
+});
 
-  res.status(200).json({ message: `Produto ${req.params.id}  encontrado` })
-};
 
 
 const createProduct = asyncHandler(async(req, res) => {
