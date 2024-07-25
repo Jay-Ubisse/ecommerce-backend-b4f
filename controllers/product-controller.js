@@ -1,28 +1,63 @@
+const asyncHandler = require ("express-async-handler");
+const Product = require("../models/produts-model");
 
 
 
+const getAllProduct = asyncHandler(async (req, res) => {
+  const products = await Product.find();
 
-const createProduct = (req,res)=>{
-  const {name,category,price,description} = req.body
+  res.status(200).json({ message: "Todos Produtos", data: products });
+});
 
-  req.status(201).json({message:'Product created'})
-}
+const getProduct = (req, res) => {
 
-
-const updateProduct =  (req,res)=>{
- 
-  const id = request.params.id
-  const {name,category,price,description} = req.body
-
-  req.status(200).json({message:'Product updated'})
-}
-
-
-const deleteProduct = (req, res) => {
-res.status(200).json({ message: `Eliminar um producto com id ${req.params.id}` });
+  res.status(200).json({ message: `Produto ${req.params.id}  encontrado` })
 };
 
 
+const createProduct = (req, res) => {
+  const { name, category, price, description } = req.body
+
+  req.status(201).json({ message: 'Product created' })
+};
 
 
-module.exports =  {createProduct,updateProduct,deleteProduct}
+const updateProduct =   asyncHandler( async (req, res) => {
+
+  const {id} = request.params
+
+  try{
+      const product = await Product.findById(id)
+
+      if(!product){
+
+        return res.status(404).json({message:"Product not found"})
+      }
+
+      const updateproduct = Product.findByIdAndUpdate(id, req.body, {
+        new: true,
+      });
+
+
+      res.status(200).json({message:"Product updated"})
+    
+  }catch(error){
+
+    res.status(500).json({message: error})
+
+  }
+
+  
+
+  req.status(200).json({ message: 'Product updated' })
+})  
+
+
+
+
+const deleteProduct = (req, res) => {
+  res.status(200).json({ message: `Eliminar um producto com id ${req.params.id}` });
+};
+
+
+module.exports = { createProduct, updateProduct, deleteProduct, getProduct, getAllProduct }
