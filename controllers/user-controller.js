@@ -30,10 +30,10 @@ const updateUser =asyncHandler(async (req, res) => {
     res.status(404).json({message:"usuario nao encontrado"})
 
   }
-  const updateUser = await User.findByIdAndUpdate(req.params.id,users,{new :true}) 
+  const updateUser = await User.findByIdAndUpdate(req.params.id,req.body,{new :true}) 
 
 
-  res.status(200).json({ message: `Actualizar usuario ${req.params.id}` });
+  res.status(200).json({ message: `Actualizar usuario ${updateUser}` });
 });
 
 const deleteUser = (req,res) =>{
