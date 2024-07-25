@@ -1,15 +1,26 @@
-const getAllUser = (req, res) => {
-  res.status(200).json({ message: "Obter todos os Usuarios" });
-};
+const asyncHandler = require("express-async-handler");
+const User = require("../models/users-models");
+
+const getAllUser = asyncHandler(async (req, res) => {
+  const users = await User.find();
+  res.status(200).json({ message: "Obter todos os Usuarios", data: users });
+});
 
 const getUser = (req, res) => {
   res.status(200).json({message: `Obter Usuario ${req.params.id}`,
   });
 };
 
-const createUser = (req, res) => {
-  res.status(201).json({ message: "Usuario criado com sucesso!", data: req.body });
-};
+
+const createUser = asyncHandler(async (req, res) => {
+  const users = await User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password
+  });
+
+  res.status(201).json({ message: "Usuario criado com sucesso!", data: users });
+});
 const updateUser = (req, res) => {
   res.status(200).json({ message: `Actualizar usuario ${req.params.id}` });
 };
