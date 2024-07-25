@@ -10,11 +10,11 @@ const productsSchema = mongoose.Schema(
         required: [true, "Por favor, introduza o nome do produto"],
       },
     price: {
-      type: String,
+      type: Number,
       required: [true, "Por favor, introduza o preço do produto"],
     },
     quantityStock: {
-      type: String,
+      type: Number,
       required: [true, "Por favor, introduza a quantidade do produto"],
     },
     category: {
@@ -30,4 +30,4 @@ const productsSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-module.exports = mongoose.model("products", productsSchema);
+module.exports = mongoose.model("Product", productsSchema);

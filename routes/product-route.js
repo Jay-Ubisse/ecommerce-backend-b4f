@@ -8,6 +8,8 @@ const {
     } = require('../controllers/product-controller')
 const router =  express.Router()
 
+router.use(express.json())
+
 router.get("/", getAllProducts)
 
 router.get("/:id", getProduct);
