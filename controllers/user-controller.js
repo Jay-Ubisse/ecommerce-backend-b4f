@@ -21,9 +21,20 @@ const createUser = asyncHandler(async (req, res) => {
 
   res.status(201).json({ message: "Usuario criado com sucesso!", data: users });
 });
-const updateUser = (req, res) => {
+
+
+const updateUser =asyncHandler(async (req, res) => {
+  const users = await User.findById(req.params.id);
+
+  if(!users){
+    res.status(404).json({message:"usuario nao encontrado"})
+
+  }
+  const updateUser = await User.findByIdAndUpdate(req.params.id,users,{new :true}) 
+
+
   res.status(200).json({ message: `Actualizar usuario ${req.params.id}` });
-};
+});
 
 const deleteUser = (req,res) =>{
   res.status(200).json({message:`Usuario Eliminado ${req.params.id}`});
