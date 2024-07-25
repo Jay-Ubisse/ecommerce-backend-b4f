@@ -31,9 +31,17 @@ const updateProduct = (req, res) => {
 };
 
 
-const deleteProduct = (req, res) => {
-  res.status(200).json({ message: `Eliminar um producto com id ${req.params.id}` });
-};
+const deleteProduct = asyncHandler(async (req, res) => {
+
+try{
+  const product = await Product.findByIdAndDelete(req.params.id);
+  res.status(200).json({ message: `product successfully deleted ${product}` });
+}
+catch(error){
+  res.status(500).json({message: error})
+}
+
+});
 
 
 module.exports = { createProduct, updateProduct, deleteProduct, getProduct, getAllProduct }
