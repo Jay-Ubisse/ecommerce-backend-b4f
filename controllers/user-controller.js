@@ -6,10 +6,17 @@ const getAllUser = asyncHandler(async (req, res) => {
   res.status(200).json({ message: "Obter todos os Usuarios", data: users });
 });
 
-const getUser = (req, res) => {
-  res.status(200).json({message: `Obter Usuario ${req.params.id}`,
+const getUser = asyncHandler ( async(req, res) => {
+
+    const user = await User.findById(req.params.id)
+
+    if(!user){
+      res.status(404).json({message:"Usuario não encontrado"});
+    }
+
+  res.status(200).json({message: `Obter Usuario ${user}`,
   });
-};
+});
 
 
 const createUser = asyncHandler(async (req, res) => {
@@ -36,7 +43,18 @@ const updateUser =asyncHandler(async (req, res) => {
   res.status(200).json({ message: `Actualizar usuario ${updateUser}` });
 });
 
-const deleteUser = (req,res) =>{
-  res.status(200).json({message:`Usuario Eliminado ${req.params.id}`});
-}
+const deleteUser = asyncHandler ( async (req,res) =>{
+
+  const user = await User.findById(req.params.id);
+
+  if (!user){
+
+    res.status(404).json({message:"Usuario não encontrado"});
+  }
+
+  userDelete = User.findByIdAndDelete(req.params.id);
+
+  res.status(200).json({message:`Usuario Eliminado ${userDelete}`});
+});
+
 module.exports = { getAllUser, getUser,  createUser,deleteUser,  updateUser };
