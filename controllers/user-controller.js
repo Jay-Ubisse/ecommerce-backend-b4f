@@ -52,7 +52,7 @@ const deleteUser = asyncHandler ( async (req,res) =>{
     res.status(404).json({message:"Usuario não encontrado"});
   }
 
-  userDelete = User.findByIdAndDelete(req.params.id);
+  userDelete = await User.findByIdAndDelete(req.params.id);
 
   res.status(200).json({message:`Usuario Eliminado ${userDelete}`});
 });
