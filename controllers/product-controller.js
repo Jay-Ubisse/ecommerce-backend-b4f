@@ -28,7 +28,7 @@ const createProduct = asyncHandler(async(req, res) => {
   });
 
   res.status(200).json({
-    message: "Producto criado com sucesso!",
+    message: "Product created successfully!",
     data: createProduct,
   });
 });
