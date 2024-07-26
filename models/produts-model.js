@@ -3,27 +3,27 @@ const productsSchema = mongoose.Schema(
   {
     title: {
       type: String,
-      required: [true, "Por favor, introduza o título do seu produto"],
+      required: [true, "Please enter the title of your product!"],
     },
     name: {
         type: String,
-        required: [true, "Por favor, introduza o nome do produto"],
+        required: [true, "Please enter the product name!"],
       },
     price: {
       type: Number,
-      required: [true, "Por favor, introduza o preço do produto"],
+      required: [true, "Please enter the price of the product!"],
     },
     quantityStock: {
       type: Number,
-      required: [true, "Por favor, introduza a quantidade do produto"],
+      required: [true, "Please enter the product quantity!"],
     },
     category: {
       type: String,
-      required: [true, "Por favor, introduza a categoria"],
+      required: [true, "Please enter the category!"],
     },
     description: {
       type: String,
-      required: [true, "Por favor, introduza a descrição do produto"],
+      required: [true, "Por favor, introduza a descrição do produto!"],
     },
   },
   {
