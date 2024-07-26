@@ -1,3 +1,5 @@
+const Customer = require('../models/customer-model');
+
 const getAllCustomers = async (req, res) => {
   try {
     const customers = await Customer.find();
@@ -31,6 +33,10 @@ const getCustomer = async (req, res) => {
 
 const createCustomer = async (req, res) => {
   const { name, email, contacto, dataNascimento, endereco, notas } = req.body;
+
+  if (!name || !email || !contacto || !dataNascimento || !endereco) {
+    return res.status(400).json({ mensagem: 'Todos os campos obrigatórios devem ser preenchidos.' });
+  }
 
   try {
     const newCustomer = new Customer({
