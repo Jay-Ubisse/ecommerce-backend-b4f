@@ -34,9 +34,9 @@ const createProduct = asyncHandler(async(req, res) => {
 });
 
 
-const updateProduct =   asyncHandler( async (req, res) => {
+const updateProduct = asyncHandler( async (req, res) => {
 
-  const {id} = request.params
+  const {id} = req.params
 
   try{
       const product = await Product.findById(id)
@@ -46,17 +46,15 @@ const updateProduct =   asyncHandler( async (req, res) => {
         return res.status(404).json({message:"Product not found"})
       }
 
-      const updateproduct = Product.findByIdAndUpdate(id, req.body, {
-        new: true,
-      });
+        productUpdate = await Product.findByIdAndUpdate(id,req.body,{
+          new: true
+        });
 
 
-      res.status(200).json({message:"Product updated"})
+      res.status(200).json({message:"Product updated",data:productUpdate})
     
   }catch(error){
-
     res.status(500).json({message: error})
-
   }
 
   
